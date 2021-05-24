@@ -118,7 +118,7 @@ st.subheader('Hue Image')
 st.sidebar.text('Hue Parmeters')
 hue = st.sidebar.slider('Hue',min_value= 0.0 , max_value=1.0,value = 0.5)
 hue = np.clip(hue,0.0,1.0)
-x_hue: torch.Tensor = kornia.enhance.adjust_saturation(x_rgb, saturation)
+x_hue: torch.Tensor = kornia.enhance.adjust_hue(x_rgb, hue)
 imshow(x_hue)
 
 st.markdown(
