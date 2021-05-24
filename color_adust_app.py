@@ -12,6 +12,8 @@ import streamlit as st
 
 
 
+
+
 def imshow(input: torch.Tensor):
         
     out: torch.Tensor = torchvision.utils.make_grid(input, nrow=2, padding=5)
@@ -72,9 +74,10 @@ st.subheader('Brightness Image')
     
 st.sidebar.text('Brightness Parmeters')
 brightness = st.sidebar.slider('Brightness',min_value= 0.0 , max_value=1.0,value = 0.6)
+brightness = np.clip(brightness,0.0,1.0)
     
     #brightness 
-x_brightness: torch.Tensor = kornia.adjust_brightness(x_rgb, brightness)
+x_brightness: torch.Tensor = kornia.enhance.adjust_brightness(x_rgb,brightness)
     
 imshow(x_brightness)
     
@@ -82,8 +85,9 @@ st.subheader('Contrast Image')
     
 st.sidebar.text('Contrast Parmeters')
 contrast = st.sidebar.slider('Contrast',min_value= 0.0 , max_value=1.0,value = 0.2)
+contrast = np.clip(contrast,0.0,1.0)
     
-x_contrast: torch.Tensor = kornia.adjust_contrast(x_rgb,contrast)
+x_contrast: torch.Tensor = kornia.enhance.adjust_contrast(x_rgb,contrast)
 imshow(x_contrast)
     
     # Adjust Gamma
@@ -92,22 +96,29 @@ st.subheader('Gamma Image')
     
 st.sidebar.text('Gamma Parmeters')
 gamma1 = st.sidebar.slider('Gamma',min_value= 1.0, max_value=10.0,value = 3.0)
+gamma1 = np.clip(gamma1,1.0,10.0)
 gain1 = st.sidebar.slider('Gain',min_value= 1.0, max_value=10.0,value = 1.5)
-x_gamma: torch.Tensor = kornia.adjust_gamma(x_rgb, gamma=gamma1, gain=gain1)
+gain1 = np.clip(gain1,1.0,10.0)
+
+
+x_gamma: torch.Tensor = kornia.enhance.adjust_gamma(x_rgb, gamma=gamma1, gain=gain1)
+
 imshow(x_gamma)
     
     # Adjust Saturation
 st.subheader('Saturation Image')
 st.sidebar.text('Saturation Parmeters')
 saturation = st.sidebar.slider('Saturation',min_value= 0.0 , max_value=1.0,value = 0.2)
-x_saturated: torch.Tensor = kornia.adjust_saturation(x_rgb, saturation)
+saturation = np.clip(saturation,0.0,1.0)
+x_saturated: torch.Tensor = kornia.enhance.adjust_saturation(x_rgb, saturation)
 imshow(x_saturated)
     
     # Adjust Hue
 st.subheader('Hue Image')
 st.sidebar.text('Hue Parmeters')
 hue = st.sidebar.slider('Hue',min_value= 0.0 , max_value=1.0,value = 0.5)
-x_hue: torch.Tensor = kornia.adjust_hue(x_rgb, hue)
+hue = np.clip(hue,0.0,1.0)
+x_hue: torch.Tensor = kornia.enhance.adjust_saturation(x_rgb, saturation)
 imshow(x_hue)
 
 st.markdown(
