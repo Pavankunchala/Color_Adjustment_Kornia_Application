@@ -91,7 +91,7 @@ imshow(x_contrast)
 st.subheader('Gamma Image')
     
 st.sidebar.text('Gamma Parmeters')
-gamma1 = st.sidebar.slider('Gamma',min_value= 1.0, max_value=10.0,value = 3)
+gamma1 = st.sidebar.slider('Gamma',min_value= 1.0, max_value=10.0,value = 3.0)
 gain1 = st.sidebar.slider('Gain',min_value= 1.0, max_value=10.0,value = 1.5)
 x_gamma: torch.Tensor = kornia.adjust_gamma(x_rgb, gamma=gamma1, gain=gain1)
 imshow(x_gamma)
