@@ -83,7 +83,7 @@ st.subheader('Contrast Image')
 st.sidebar.text('Contrast Parmeters')
 contrast = st.sidebar.slider('Contrast',min_value= 0.0 , max_value=1.0,value = 0.2)
     
-x_contrast: torch.Tensor = kornia.adjust_contrast(x_rgb, 0.2)
+x_contrast: torch.Tensor = kornia.adjust_contrast(x_rgb,contrast)
 imshow(x_contrast)
     
     # Adjust Gamma
@@ -93,7 +93,7 @@ st.subheader('Gamma Image')
 st.sidebar.text('Gamma Parmeters')
 gamma = st.sidebar.slider('Gamma',min_value= 1, max_value=10,value = 3)
 gain = st.sidebar.slider('Gain',min_value= 1.0, max_value=10.0,value = 1.5)
-x_gamma: torch.Tensor = kornia.adjust_gamma(x_rgb, gamma=3., gain=2.5)
+x_gamma: torch.Tensor = kornia.adjust_gamma(x_rgb, gamma=gamma, gain=gain)
 imshow(x_gamma)
     
     # Adjust Saturation
