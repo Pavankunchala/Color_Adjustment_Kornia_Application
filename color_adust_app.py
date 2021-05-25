@@ -10,6 +10,7 @@ from PIL import Image
 
 import streamlit as st
 
+DEMO_IMAGE = 'kids.jpg'
 
 
 
@@ -36,9 +37,10 @@ st.sidebar.subheader('Parameters')
     
 uploaded_file = st.file_uploader("Upload an Image",type=[ "jpg", "jpeg",'png'])
 if uploaded_file is not None:
-    im = Image.open(uploaded_file)
+    im = np.array(Image.open(uploaded_file))
 else:
-    im = Image.open("kids.jpg")
+    demo_image= DEMO_IMAGE
+    im = np.array(Image.open(demo_image))
         
         
    
