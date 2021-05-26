@@ -35,7 +35,7 @@ st.sidebar.subheader('Parameters')
     
     #input file
     
-uploaded_file = st.file_uploader("Upload an Image",type=[ "jpg", "jpeg",'png'])
+uploaded_file = st.file_uploader("Upload an Image",type=[ "jpg", "jpeg"])
 if uploaded_file is not None:
     im = np.array(Image.open(uploaded_file))
 else:
