@@ -141,6 +141,8 @@ st.markdown(
     * You can check the documentation from [here](https://kornia.readthedocs.io/en/latest/)
     
     * Created by **[Pavan Kunchala](https://www.linkedin.com/in/pavan-kumar-reddy-kunchala/)**
+
+    * I am also looking for Freelancing and Collabration Opportunites in the field of **Deep Learning** and **Computer Vision**,if you are willing collaborate to mail me at (pavankunchalapk@gmail.com)
     
     """
 )
